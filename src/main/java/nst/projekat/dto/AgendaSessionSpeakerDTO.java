@@ -7,6 +7,8 @@ public class AgendaSessionSpeakerDTO {
     private Long sessionID;
     private Long agendaID;
     private Long speakerID;
-    private AgendaSessionDTO agendaSession;
+    private String agendaSessionName;
     private SpeakerDTO speaker;
+    private String agendaSessionTimeFrom;
+    private String agendaSessionTimeTo;
 }

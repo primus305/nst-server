@@ -20,9 +20,7 @@ public class PresenceController {
     public @ResponseBody
     ResponseEntity save(@RequestBody List<PresenceDTO> presenceDTOs) {
         try {
-            for (PresenceDTO presenceDTO: presenceDTOs) {
-                presenceService.save(presenceDTO);
-            }
+            presenceDTOs.forEach(presenceService::save);
             return ResponseEntity.ok(presenceDTOs);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

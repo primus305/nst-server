@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Track implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long trackID;
     @NotNull
     private String name;

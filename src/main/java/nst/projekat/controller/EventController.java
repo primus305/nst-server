@@ -44,15 +44,15 @@ public class EventController {
         }
     }
 
-    @RequestMapping(value = "getByAgenda/{agendaID}")
-    public @ResponseBody
-    ResponseEntity findByAgenda(@PathVariable Long agendaID) {
-        try {
-            return ResponseEntity.ok(eventService.findByAgenda(agendaID));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid id!");
-        }
-    }
+//    @RequestMapping(value = "getByAgenda/{agendaID}")
+//    public @ResponseBody
+//    ResponseEntity findByAgenda(@PathVariable Long agendaID) {
+//        try {
+//            return ResponseEntity.ok(eventService.findByAgenda(agendaID));
+//        } catch (Exception ex) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid id!");
+//        }
+//    }
 
     @RequestMapping(value = "allBySpeaker/{speakerID}",method = RequestMethod.GET)
     public @ResponseBody

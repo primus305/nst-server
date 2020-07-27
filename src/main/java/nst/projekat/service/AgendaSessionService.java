@@ -15,4 +15,6 @@ public interface AgendaSessionService {
     AgendaSessionDTO findById(AgendaSessionPK id);
 
     List<AgendaSessionDTO> findAllBySuperSession(AgendaSessionDTO agendaSessionDTO);
+
+    AgendaSessionDTO update(AgendaSessionDTO agendaSessionDTO);
 }

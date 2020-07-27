@@ -19,30 +19,7 @@ public class AgendaSessionController {
     @Autowired
     private AgendaSessionService agendaSessionService;
 
-    @RequestMapping(value = "saveAll", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity save(@RequestBody List<AgendaSessionDTO> agendaSessionDTOs) {
-        try {
-            for (AgendaSessionDTO asDTO: agendaSessionDTOs) {
-                agendaSessionService.save(asDTO);
-            }
-            return ResponseEntity.ok(agendaSessionDTOs);
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-    }
-
-    @RequestMapping(value = "all/{agendaID}",method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity findAllByAgenda(@PathVariable Long agendaID) {
-        try {
-            return ResponseEntity.ok(agendaSessionService.findAllByAgenda(agendaID));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-    }
-
-    @RequestMapping(value = "get/{agendaID}-{sessionID}")
+    @RequestMapping(value = "get/{agendaID}-{sessionID}", method = RequestMethod.GET)
     public @ResponseBody
     ResponseEntity findById(@PathVariable Long agendaID, @PathVariable Long sessionID) {
         try {
@@ -52,20 +29,8 @@ public class AgendaSessionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid id!");
         }
     }
-    @RequestMapping(value = "allSubsessions/{agendaID}-{sessionID}",method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity findAllBySuperSession(@PathVariable Long agendaID, @PathVariable Long sessionID) {
-        try {
-            AgendaSessionDTO superSession = new AgendaSessionDTO();
-            superSession.setAgendaID(agendaID);
-            superSession.setSessionID(sessionID);
-            return ResponseEntity.ok(agendaSessionService.findAllBySuperSession(superSession));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-    }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @RequestMapping(value = "update", method = RequestMethod.PUT)
     public @ResponseBody
     ResponseEntity update(@RequestBody AgendaSessionDTO agendaSessionDTO) {
         try {

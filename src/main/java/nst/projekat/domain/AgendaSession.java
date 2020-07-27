@@ -3,9 +3,7 @@ package nst.projekat.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,9 +26,9 @@ public class AgendaSession implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Hall hall;
     private String sessionOverview;
-    @OneToMany(mappedBy = "agendaSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendaSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<AgendaSessionTrack> tracks;
-    @OneToMany(mappedBy = "agendaSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendaSession", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<AgendaSessionSpeaker> speakers;
     @ManyToOne(fetch = FetchType.EAGER)
     private File file;

@@ -24,11 +24,11 @@ public class UserController {
         return principal;
     }
 
-    @RequestMapping(value = "all")
+    @RequestMapping(value = "allNotInvited/{eventID}", method = RequestMethod.GET)
     public @ResponseBody
-    ResponseEntity findAll() {
+    ResponseEntity findAll(@PathVariable Long eventID) {
         try {
-            return ResponseEntity.ok(userService.findAll());
+            return ResponseEntity.ok(userService.findAllNotInvited(eventID));
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }

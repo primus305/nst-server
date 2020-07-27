@@ -25,4 +25,5 @@ public interface AgendaSessionMapper {
     AgendaSession agendaSessionDTOToAgendaSession(AgendaSessionDTO agendaSessionDTO);
 
     List<AgendaSessionDTO> toAgendaSessionDTOs(List<AgendaSession> agendaSessions);
+    List<AgendaSession> toAgendaSessions(List<AgendaSessionDTO> agendaSessionsDTO);
 }

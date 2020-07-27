@@ -7,4 +7,6 @@ import java.util.List;
 public interface SpeakerService {
     List<SpeakerDTO> findAll();
     SpeakerDTO save(SpeakerDTO speaker);
+
+    List<SpeakerDTO> findAllNotOnSession(Long sessionID, Long agendaID);
 }

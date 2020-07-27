@@ -18,17 +18,10 @@ public class AgendaController {
     @Autowired
     private AgendaService agendaService;
 
-    @Autowired
-    private AgendaSessionService agendaSessionService;
-
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity save(@RequestBody AgendaDTO agendaDTO) {
         try {
-/*            agendaService.save(agenda);
-            for (AgendaSession as: agenda.getSessions()) {
-                agendaSessionService.save(as);
-            }*/
             return ResponseEntity.ok(agendaService.save(agendaDTO));
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());

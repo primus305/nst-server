@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class User implements UserDetails {
@@ -157,5 +158,26 @@ public class User implements UserDetails {
                 ", role=" + role +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(faculty, user.faculty) &&
+                Objects.equals(organization, user.organization) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                role == user.role &&
+                Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userID, firstName, lastName, faculty, organization, username, password, role, email);
     }
 }

@@ -4,6 +4,7 @@ import nst.projekat.domain.Agenda;
 import nst.projekat.dto.AgendaDTO;
 import nst.projekat.mapper.AgendaMapper;
 import nst.projekat.repository.AgendaRepository;
+import nst.projekat.repository.AgendaSessionRepository;
 import nst.projekat.service.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,17 @@ public class AgendaServiceImpl implements AgendaService {
     @Autowired
     private AgendaRepository agendaRepository;
 
+    @Autowired
+    private AgendaSessionRepository agendaSessionRepository;
+
     @Override
     public AgendaDTO save(AgendaDTO agendaDTO) {
         Agenda agenda = AgendaMapper.INSTANCE.agendaDTOToAgenda(agendaDTO);
-        return AgendaMapper.INSTANCE.agendaToAgendaDTO(agendaRepository.save(agenda));
+        agendaRepository.save(agenda);
+        agenda.getSessions().forEach(agendaSession -> {
+            agendaSessionRepository.save(agendaSession);
+        });
+        return AgendaMapper.INSTANCE.agendaToAgendaDTO(agenda);
     }
 
     @Override

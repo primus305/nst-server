@@ -48,11 +48,7 @@ public class PresenceServiceImpl implements PresenceService {
         p.setUserID(userID);
         p.setEventID(eventID);
         notification.setPresence(p);
-/*        User u = new User();
-        u.setUserID(userID);
-        notification.setUser(u);*/
         Optional<Event> e = eventRepository.findById(eventID);
-/*        notification.setEvent(e.get());*/
         notification.setText("Pozivnica za " + e.get().getName());
         notificationRepository.save(notification);
     }

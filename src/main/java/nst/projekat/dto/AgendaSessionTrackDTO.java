@@ -7,6 +7,5 @@ public class AgendaSessionTrackDTO {
     private Long sessionID;
     private Long agendaID;
     private Long trackID;
-    private AgendaSessionDTO agendaSession;
     private TrackDTO track;
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface UserService {
     List<UserDTO> findAll();
     UserDTO save(UserDTO userDTO);
+
+    List<UserDTO> findAllNotInvited(Long eventID);
 }

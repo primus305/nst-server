@@ -26,6 +26,16 @@ public class SpeakerController {
         }
     }
 
+    @RequestMapping(value = "notOnSession/{sessionID}-{agendaID}")
+    public @ResponseBody
+    ResponseEntity findAllNotOnSession(@PathVariable Long sessionID, @PathVariable Long agendaID) {
+        try {
+            return ResponseEntity.ok(speakerService.findAllNotOnSession(sessionID, agendaID));
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+    }
+
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity save(@RequestBody SpeakerDTO speakerDTO) {
